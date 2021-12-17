@@ -58,8 +58,8 @@ const Post = ({user}) => {
                     <h1 className={'text underline text-red-500 text-3xl'}>
                         2021聖誕傳情
                     </h1>
-                    <input type="text" ref={idRef} onChange={detectLetter} className={'ring-2 focus:ring-4 p-2 rounded-xl'} maxLength={9} placeholder={'對方的學號'}/>
-                    <textarea name="" ref={textRef} className={'ring-2 focus:ring-4 p-2 rounded-xl p-2'} placeholder={'想說的話！'} id="" cols="30" rows="10"></textarea>
+                    <input type="text" ref={idRef} onChange={detectLetter} className={'ring-2 focus:ring-4 p-2 rounded-xl border border-rose-400'} maxLength={9} placeholder={'對方的學號'}/>
+                    <textarea name="" ref={textRef} className={'ring-2 focus:ring-4 p-2 rounded-xl p-2 border border-rose-400'} placeholder={'想說的話！'} id="" cols="30" rows="10"></textarea>
                     <button onClick={addPost} className={'border-2 rounded-md p-2'}>送出</button>
                     <p className={'text-black'}>
                         對方會在聖誕節當天在他的學術信箱裡收到你留給他的話唷！

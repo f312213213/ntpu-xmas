@@ -11,7 +11,6 @@ const Signin = ({setUser, user}) => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
                 const userGet = result.user;
-                console.log(userGet)
                 setUser(userGet)
             }).catch((error) => {
             const errorCode = error.code;
