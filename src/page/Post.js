@@ -5,15 +5,15 @@ import Loader from "react-loader-spinner";
 
 const Post = ({user}) => {
     const [loading, setLoading] = useState(false);
-
+    const [response, setResponse] = useState('');
     const addPost = () => {
         setLoading(true)
         if (idRef.current.value === '' || textRef.current.value === ''){
-            alert('兩個都要填喔！')
+            setResponse('兩個都要填喔！')
             setLoading(false)
         }
         else if(idRef.current.value.length !== 9){
-            alert('學號不正確喔！')
+            setResponse('學號不正確喔！')
             setLoading(false)
         }
         else{
@@ -22,9 +22,15 @@ const Post = ({user}) => {
                 email: 's'+idRef.current.value+'@gm.ntpu.edu.tw',
                 content: textRef.current.value
             })
-            idRef.current.value = ''
-            textRef.current.value = ''
-            alert('我們收到囉，會在聖誕節當天幫你寄出這封信！')
+                .then(()=>{
+                    idRef.current.value = ''
+                    textRef.current.value = ''
+                    setResponse('我們收到囉，會在聖誕節當天幫你寄出這封信！')
+                })
+                .catch(()=>{
+                    setResponse('現在出了點問題，請跟管理員聯繫！')
+                })
+
             setLoading(false)
         }
     }
@@ -60,6 +66,9 @@ const Post = ({user}) => {
                     </h1>
                     <input type="text" ref={idRef} onChange={detectLetter} className={'ring-2 focus:ring-4 p-2 rounded-xl border border-rose-400'} maxLength={9} placeholder={'對方的學號'}/>
                     <textarea name="" ref={textRef} className={'ring-2 focus:ring-4 p-2 rounded-xl p-2 border border-rose-400'} placeholder={'想說的話！'} id="" cols="30" rows="10"></textarea>
+                    <p>
+                        {response}
+                    </p>
                     <button onClick={addPost} className={'border-2 rounded-md p-2'}>
                         {
                             loading ?
