@@ -25,9 +25,10 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route exact path={'/'} element={<Home/>}/>
-                <Route path={'/signin'} element={<Signin setUser={setUser} user={user}/>}/>
-                <Route path={'/post'} element={<Post user={user}/>}/>
+                <Route exact path={'/'} exact element={<Home/>}/>
+                <Route path={'/signin'} exact element={<Signin setUser={setUser} user={user}/>}/>
+                <Route path={'/post'} exact element={<Post user={user}/>}/>
+                <Route exact path={'*'} element={<Home/>}/>
             </Routes>
         </Router>
     );
